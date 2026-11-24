@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 19th, Sameeraaa! ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #f8dce6;
+  --light: #fff7fa;
+  --rose: #d97899;
+  --dark: #713c53;
+  --deep: #482536;
+  --white: #fff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--light);
+  color: var(--deep);
+  overflow-x: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  display: none;
+  padding: 45px 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page.active {
+  display: flex;
+  animation: appear .7s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  margin: 12px 0;
+  color: var(--dark);
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--rose);
+  font-size: 2.5rem;
+}
+
+.small {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+.btn {
+  border: none;
+  background: var(--rose);
+  color: white;
+  padding: 14px 27px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: .25s;
+  box-shadow: 0 5px 15px #d9789930;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  background: var(--dark);
+}
+
+.btn.secondary {
+  background: white;
+  color: var(--dark);
+  border: 1px solid var(--pink);
+}
+
+.card {
+  background: white;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 10px 35px #713c5310;
+  margin: 20px auto;
+}
+
+.decor {
+  position: absolute;
+  color: #e9a9bf;
+  opacity: .5;
+  font-size: 25px;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-18px) rotate(10deg); }
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.envelope {
+  width: 210px;
+  height: 140px;
+  background: #edb8ca;
+  margin: 35px auto;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 12px 25px #713c5320;
+}
+
+.envelope:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 105px solid transparent;
+  border-right: 105px solid transparent;
+  border-top: 85px solid #d97899;
+  z-index: 2;
+  transform-origin: top;
+  transition: .7s;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+}
+
+.envelope:after {
+  content: '♡';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 35px;
+  color: white;
+}
+
+.compliment {
+  min-height: 140px;
+  display: grid;
+  place-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--dark);
+}
+
+.option {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 15px;
+  border: 1px solid #f0c6d5;
+  background: #fff8fb;
+  color: var(--dark);
+  font-size: 15px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.option:hover {
+  background: var(--pink);
+  transform: scale(1.02);
+}
+
+.feedback {
+  color: var(--rose);
+  font-weight: 600;
+  min-height: 28px;
+}
+
+.cake {
+  font-size: 100px;
+  cursor: pointer;
+  user-select: none;
+  margin: 20px;
+}
+
+.candles {
+  font-size: 28px;
+  letter-spacing: 8px;
+  margin-bottom: -15px;
+  cursor: pointer;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+  margin: 25px 0;
+}
+
+.photo {
+  min-height: 170px;
+  border: 2px dashed #e6a8bd;
+  border-radius: 18px;
+  background: #fff4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  color: #b66c87;
+  font-size: 14px;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.photo input {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.letter-paper {
+  background: #fffdfb;
+  padding: 35px;
+  border-radius: 5px;
+  text-align: left;
+  box-shadow: 0 10px 35px #713c5315;
+  border: 1px solid #f4e4e9;
+}
+
+.letter-paper p {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.salutation {
+  font-size: 23px !important;
+  color: var(--rose);
+}
+
+.sign {
+  text-align: right;
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;
+  color: var(--rose);
+  margin-top: 30px;
+}
+
+.final-heart {
+  font-size: 65px;
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@media(max-width:480px) {
+  .card { padding: 22px; }
+  .letter-paper { padding: 23px; }
+  .gallery { gap: 9px; }
+  .photo { min-height: 140px; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- PAGE 1: COVER -->
+<section class="page active" id="page1">
+  <span class="decor" style="top:10%;left:10%">♡</span>
+  <span class="decor" style="top:20%;right:12%">✿</span>
+  <span class="decor" style="bottom:15%;left:15%">✧</span>
+  <span class="decor" style="bottom:20%;right:12%">♡</span>
+
+  <div class="content">
+    <div class="small">A very important day has arrived</div>
+    <div class="script">For someone special...</div>
+    <h1>Happy Birthday<br>Sameeraaa!</h1>
+    <p>Someone just turned 19. And unfortunately, you're still stuck with me. ♡</p>
+    <div style="font-size:55px;margin:20px">🎀</div>
+    <button class="btn" onclick="nextPage(2)">Open your surprise ♡</button>
+  </div>
+</section>
+
+<!-- PAGE 2: ENVELOPE -->
+<section class="page" id="page2">
+  <div class="content">
+    <div class="small">A little something for you</div>
+    <h2>You've got mail!</h2>
+    <p>Someone took the time to make this. So you better appreciate it.</p>
+
+    <div class="envelope" id="envelope" onclick="openEnvelope()"></div>
+
+    <p id="envelopeText">Tap the envelope. Don't be shy.</p>
+    <button class="btn" id="envelopeBtn" style="display:none" onclick="nextPage(3)">Continue ♡</button>
+  </div>
+</section>
+
+<!-- PAGE 3: YES OR YES -->
+<section class="page" id="page3">
+  <div class="content">
+    <div class="script">A very serious question</div>
+    <h2>Do you realise how lucky you are?</h2>
+
+    <div class="card">
+      <p>To have someone who made an entire website for your birthday?</p>
+      <button class="btn" onclick="answerYes()">YES, obviously.</button>
+      <button class="btn secondary" onclick="answerNo()">No?</button>
+      <p class="feedback" id="answerFeedback"></p>
+    </div>
+
+    <button class="btn" onclick="nextPage(4)">Next →</button>
+  </div>
+</section>
+
+<!-- PAGE 4: COMPLIMENTS -->
+<section class="page" id="page4">
+  <div class="content">
+    <div class="small">Things I genuinely appreciate</div>
+    <h2>Two things about you ♡</h2>
+
+    <div class="card">
+      <div class="compliment" id="complimentText">
+        I genuinely like how honest you are. You don't pretend to be someone you're not, and I really admire that about you.
+      </div>
+      <div>
+        <button class="btn secondary" onclick="changeCompliment(-1)">←</button>
+        <button class="btn" onclick="changeCompliment(1)">Next compliment →</button>
+      </div>
+      <p class="small" id="complimentCount">1 / 2</p>
+    </div>
+
+    <button class="btn" onclick="nextPage(5)">Continue ♡</button>
+  </div>
+</section>
+
+<!-- PAGE 5: QUIZ -->
+<section class="page" id="page5">
+  <div class="content">
+    <div class="small">Let's see how well you know yourself</div>
+    <h2>Birthday personality test</h2>
+
+    <div class="card">
+      <p><b>What is your most likely reaction when someone annoys you?</b></p>
+      <button class="option" onclick="quizAnswer(0)">A. Ignore them and move on.</button>
+      <button class="option" onclick="quizAnswer(1)">B. Give them a whole lecture.</button>
+      <button class="option" onclick="quizAnswer(2)">C. Act like nothing happened, but remember everything.</button>
+      <button class="option" onclick="quizAnswer(3)">D. Depends on my mood.</button>
+      <p class="feedback" id="quizFeedback"></p>
+    </div>
+
+    <button class="btn" onclick="nextPage(6)">Next →</button>
+  </div>
+</section>
+
+<!-- PAGE 6: CAKE -->
+<section class="page" id="page6">
+  <div class="content">
+    <div class="script">Make a wish, birthday girl!</div>
+    <h2>19 candles for 19 years 🎂</h2>
+    <p>Tap the candles to blow them out. Yes, manually. Budget issues.</p>
+
+    <div class="card">
+      <div class="candles" id="candles" onclick="blowCandle()">🕯️ 🕯️ 🕯️</div>
+      <div class="cake" onclick="blowCandle()">🎂</div>
+      <p id="cakeText">3 candles left!</p>
+      <button class="btn" onclick="resetCake()">Relight candles</button>
+    </div>
+
+    <button class="btn" onclick="nextPage(7)">Continue ♡</button>
+  </div>
+</section>
+
+<!-- PAGE 7: GALLERY -->
+<section class="page" id="page7">
+  <div class="content">
+    <div class="small">A little memory corner</div>
+    <h2>Our little moments ♡</h2>
+    <p>Some memories deserve their own little space. Add your favourite pictures here!</p>
+
+    <div class="gallery">
+      <div class="photo">
+        <span>📷 Memory 1</span>
+        <input type="file" accept="image/*" onchange="uploadPhoto(event,this)">
+      </div>
+      <div class="photo">
+        <span>📷 Memory 2</span>
+        <input type="file" accept="image/*" onchange="uploadPhoto(event,this)">
+      </div>
+      <div class="photo">
+        <span>📷 Memory 3</span>
+        <input type="file" accept="image/*" onchange="uploadPhoto(event,this)">
+      </div>
+      <div class="photo">
+        <span>📷 Memory 4</span>
+        <input type="file" accept="image/*" onchange="uploadPhoto(event,this)">
+      </div>
+    </div>
+
+    <button class="btn" onclick="nextPage(8)">One last thing ♡</button>
+  </div>
+</section>
+
+<!-- PAGE 8: LETTER -->
+<section class="page" id="page8">
+  <div class="content">
+    <div class="script">From me to you</div>
+    <h2>A little letter ♡</h2>
+
+    <div class="letter-paper">
+      <p class="salutation">Dear Sameeraaa,</p>
+
+      <p>
+        First of all, happy 19th birthday!
+        It's funny how you became so close to me in such a short time.
+        I genuinely didn't expect that, but I'm really glad you did.
+      </p>
+
+      <p>
+        I want you to know that I'll always be there for you.
+        Whether things are going great or life gets a little difficult,
+        you can count on me. You don't have to figure everything
+        out alone.
+      </p>
+
+      <p>
+        I hope this year brings you happiness, peace,
+        good memories and everything you've been wishing for.
+        Keep being yourself. Don't ever lose that.
+      </p>
+
+      <p>
+        And yes, despite all the teasing on this website,
+        you genuinely mean a lot to me.
+      </p>
+
+      <p>
+        Have the best 19th. You deserve it. ❤️
+      </p>
+
+      <div class="sign">
+        Yours,<br>
+        Navya ♡<br>
+        <small style="font-family:Arial;font-size:12px;">
+          (your boyfriend)
+        </small>
+      </div>
+    </div>
+
+    <button class="btn" onclick="nextPage(9)">The final surprise →</button>
+  </div>
+</section>
+
+<!-- PAGE 9: FINAL -->
+<section class="page" id="page9">
+  <div class="content">
+    <div class="final-heart">💗</div>
+    <div class="script">And finally...</div>
+    <h1>Happy 19th Birthday!</h1>
+
+    <p>
+      May your days be full of laughter, your camera roll full of memories,
+      and your life full of beautiful surprises.
+    </p>
+
+    <p>
+      Stay happy, stay honest, stay pretty and please stay a little less dramatic.
+      (Actually, don't. It keeps things interesting.)
+    </p>
+
+    <div style="font-size:45px;margin:25px">🎀 🌷 🦢</div>
+
+    <h2>Love you, Sameeraaa! ♡</h2>
+
+    <div class="sign">
+      Yours,<br>
+      Navya ♡
+      <div style="font-family:Arial;font-size:12px;margin-top:8px;">
+        Your boyfriend, unfortunately. :)
+      </div>
+    </div>
+
+    <button class="btn" onclick="celebrate()">Celebrate again! 🎉</button>
+    <button class="btn secondary" onclick="nextPage(1)">Replay website ↻</button>
+  </div>
+</section>
+
+<script>
+/* PAGE NAVIGATION */
+function nextPage(number) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById('page' + number).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (number === 9) celebrate();
+}
+
+/* ENVELOPE */
+function openEnvelope() {
+  document.getElementById('envelope').classList.add('open');
+  document.getElementById('envelopeText').innerText =
+    "A little birthday surprise, made with love. ♡";
+  document.getElementById('envelopeBtn').style.display = 'inline-block';
+}
+
+/* YES OR YES */
+function answerYes() {
+  document.getElementById('answerFeedback').innerText =
+    "Correct answer. Finally, some intelligence. 💗";
+}
+
+function answerNo() {
+  document.getElementById('answerFeedback').innerText =
+    "Wrong answer. Try again. There was only one correct option. 😭";
+}
+
+/* COMPLIMENTS */
+const compliments = [
+  "I genuinely like how honest you are. You don't pretend to be someone you're not, and I really admire that about you.",
+
+  "And can we talk about your features? Your facial structure, your features and the way everything comes together are genuinely beautiful. You really are pretty."
+];
+
+let complimentIndex = 0;
+
+function changeCompliment(direction) {
+  complimentIndex =
+    (complimentIndex + direction + compliments.length) % compliments.length;
+
+  document.getElementById('complimentText').innerText =
+    compliments[complimentIndex];
+
+  document.getElementById('complimentCount').innerText =
+    (complimentIndex + 1) + " / 2";
+}
+
+/* PERSONALITY QUIZ */
+function quizAnswer(choice) {
+  const replies = [
+    "Very peaceful of you. I don't believe it, but okay. 😂",
+    "A whole lecture? Sounds about right.",
+    "The memory never forgets. Terrifying. 😭",
+    "The most realistic answer. We accept it."
+  ];
+
+  document.getElementById('quizFeedback').innerText = replies[choice];
+}
+
+/* CAKE */
+let candlesLeft = 3;
+
+function blowCandle() {
+  if (candlesLeft > 0) {
+    candlesLeft--;
+
+    let candleDisplay = "";
+    for (let i = 0; i < candlesLeft; i++) {
+      candleDisplay += "🕯️ ";
+    }
+
+    document.getElementById('candles').innerText =
+      candleDisplay || "✨ ✨ ✨";
+
+    document.getElementById('cakeText').innerText =
+      candlesLeft > 0
+      ? candlesLeft + " candles left!"
+      : "All candles blown out! Make a wish! 💗";
+
+    if (candlesLeft === 0) celebrate();
+  }
+}
+
+function resetCake() {
+  candlesLeft = 3;
+  document.getElementById('candles').innerText = "🕯️ 🕯️ 🕯️";
+  document.getElementById('cakeText').innerText = "3 candles left!";
+}
+
+/* PHOTO UPLOAD */
+function uploadPhoto(event, input) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const box = input.parentElement;
+    box.innerHTML = "";
+
+    const img = document.createElement('img');
+    img.src = e.target.result;
+    box.appendChild(img);
+  };
+
+  reader.readAsDataURL(file);
+}
+
+/* CONFETTI */
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function celebrate() {
+  particles = [];
+
+  for (let i = 0; i < 160; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: -Math.random() * canvas.height,
+      size: Math.random() * 8 + 3,
+      speed: Math.random() * 4 + 2,
+      drift: Math.random() * 3 - 1.5,
+      color: ['#e89ab5', '#f7c7d8', '#ffffff', '#b96d89', '#f3a6a6'][
+        Math.floor(Math.random() * 5)
+      ],
+      rotation: Math.random() * 360
+    });
+  }
+
+  animateConfetti();
+}
+
+let animationRunning = false;
+
+function animateConfetti() {
+  if (animationRunning) return;
+  animationRunning = true;
+
+  function frame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+      ctx.restore();
+
+      p.y += p.speed;
+      p.x += p.drift;
+      p.rotation += 3;
+    });
+
+    particles = particles.filter(p => p.y < canvas.height + 20);
+
+    if (particles.length > 0) {
+      requestAnimationFrame(frame);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      animationRunning = false;
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+/* FLOATING DECORATIONS */
+const symbols = ['♡', '✧', '✿', '⋆'];
+
+setInterval(() => {
+  const decoration = document.createElement('div');
+  decoration.innerText =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  decoration.style.position = 'fixed';
+  decoration.style.left = Math.random() * 100 + 'vw';
+  decoration.style.bottom = '-30px';
+  decoration.style.color = '#d97899';
+  decoration.style.fontSize = Math.random() * 20 + 12 + 'px';
+  decoration.style.pointerEvents = 'none';
+  decoration.style.zIndex = '1';
+  decoration.style.transition = 'transform 6s linear, opacity 6s linear';
+
+  document.body.appendChild(decoration);
+
+  requestAnimationFrame(() => {
+    decoration.style.transform =
+      'translateY(-110vh) rotate(360deg)';
+    decoration.style.opacity = '0';
+  });
+
+  setTimeout(() => decoration.remove(), 6000);
+}, 1200);
+</script>
+
+</body>
+</html>
